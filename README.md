@@ -18,22 +18,39 @@ Used in conjunction with [yotambentov](https://github.com/yotambentov)'s [PyNigh
 
 ### Getting Started
 
-#### Step 1: Get the code
+#### Get the code
 Open your terminal application and run the following:
 
     git clone https://github.com/tuftsenigma/PublicDataScraping.git
 
-#### Step 2: Install BeautifulSoup
+#### Install BeautifulSoup
     
     sudo pip install beautifulsoup4
 
 Remove `sudo` on Windows
 
-#### Step 3: Run a sample
-
-    python <filename.py>
-
 ---
 
-### Advanced Usage
+### Running Examples
+
+#### Scraping the [Tufts Daily](http://tuftsdaily.com) for Links
+
+    python link_scrape_tufts_daily.py
+
+#### Scraping web pages for images
+
+    python simple_html_img_scrape.py [url]
+
+`url` is an optional argument, defaults to [https://google.com](https://google.com)
+
+#### NBA Playoff Plus/Minus
+To enable plotting using [Plot.ly](https://plot.ly/), follow the initialization instructions found [here](https://plot.ly/python/getting-started/)
+
+Run the code:
+
+    cd examples
+    python nba_playoff_plusminus.py <player_id> <year>
+
+Where the `player_id` is an identifier found from [basketball-reference.com](http://www.basketball-reference.com/) e.g. `iversal01` for Allen Iverson
+
 
