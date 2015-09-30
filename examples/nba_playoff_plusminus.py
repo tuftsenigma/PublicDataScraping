@@ -20,7 +20,7 @@ from urllib2 import urlopen
 try:
     import plotly.plotly as py
     from plotly.graph_objs import *
-    do_plot = False
+    do_plot = True
 except:
     print('Plot.ly not installed/initialized, to do so run "pip install plotly", and sign up for an account')
     do_plot = False
