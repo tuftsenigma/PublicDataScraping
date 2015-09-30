@@ -35,6 +35,13 @@ Remove `sudo` on Windows
 
 Remove `sudo` on Windows
 
+###  Optional
+
+#### Sign up for [plotly](https://plot.ly/)
+
+If you want to make some nice plots while you're at it sign up 
+on plotly and have your [api-key](https://plot.ly/settings/api/) handy. 
+
 ---
 
 ### Running Examples
