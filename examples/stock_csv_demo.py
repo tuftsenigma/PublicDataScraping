@@ -25,6 +25,7 @@ except:
     print('Plot.ly not installed/initialized, to do so run "pip install pandas')
     has_pandas = False
 
+
 def csv_to_dataframe(file_name):
     """ Example conversion function from comma seperated values file to pandas DataFrame"""
 
@@ -44,6 +45,7 @@ def add_trace(x_s, y_s, symbol):
         data = Data( [ new_trace ] )
         plot_url = py.plot(data, filename='stock-price-example', fileopt='append')
 
+
 def scatterplot(x1_data, y1_data, symbol):
     if do_plot:
         data_1 = Scatter(x=x1_data, y=y1_data, mode='lines', name=symbol)
@@ -54,6 +56,7 @@ def scatterplot(x1_data, y1_data, symbol):
         file_name = 'stock-price-example'
         py.plot(fig_, filename=file_name)
 
+
 def plot_stock(username, api_key, prices, symbol):
     if do_plot:
         py.sign_in(username, api_key)
@@ -61,34 +64,38 @@ def plot_stock(username, api_key, prices, symbol):
         prices = [x['Adj_Close'] for x in prices]
         scatterplot(dates, prices, symbol)
 
-start_date = '2007-01-01'
-end_date = '2015-08-31'
-plotly_name = 'username'
-plotly_api_key = 'api-key'
+def main():
+    start_date = '2007-01-01'
+    end_date = '2015-08-31'
+    plotly_name = 'username'
+    plotly_api_key = 'api-key'
 
-# get_historical is part of the yahoo-finance module
-nflx = Share('nflx')
-nflx_prices = nflx.get_historical(start_date, end_date)
+    # get_historical is part of the yahoo-finance module
+    nflx = Share('nflx')
+    nflx_prices = nflx.get_historical(start_date, end_date)
 
-# how you can just extract the dates only
-nflx_dates = [x['Date'] for x in nflx_prices]
+    # how you can just extract the dates only
+    nflx_dates = [x['Date'] for x in nflx_prices]
 
-# nflx_prices is currently sorted by dates because thats how the module gave them
-sorted_by_price = sorted(nflx_prices, key=lambda x: x['Adj_Close'], reverse=True)
+    # nflx_prices is currently sorted by dates because thats how the module gave them
+    sorted_by_price = sorted(nflx_prices, key=lambda x: x['Adj_Close'], reverse=True)
 
-# say you wanted multiple stock prices
-ticker_symbols = ['hrl', 'tsn', 'gis', 'k']
-foods = {}
+    # say you wanted multiple stock prices
+    ticker_symbols = ['hrl', 'tsn', 'gis', 'k']
+    foods = {}
 
-if do_plot:
-    plot_stock(plotly_name, plotly_api_key, nflx_prices, 'nflx')
-
-for symbol in ticker_symbols:
-    foods[symbol] = Share(symbol).get_historical(start_date, end_date)
-    foods[symbol].sort(key=lambda x: x['Date'])
-    dates = [x['Date'] for x in foods[symbol]]
-    prices = [x['Adj_Close'] for x in foods[symbol]]
     if do_plot:
-        add_trace(dates, prices, symbol)
+        plot_stock(plotly_name, plotly_api_key, nflx_prices, 'nflx')
+
+    for symbol in ticker_symbols:
+        foods[symbol] = Share(symbol).get_historical(start_date, end_date)
+        foods[symbol].sort(key=lambda x: x['Date'])
+        dates = [x['Date'] for x in foods[symbol]]
+        prices = [x['Adj_Close'] for x in foods[symbol]]
+        if do_plot:
+            add_trace(dates, prices, symbol)
+
+if __name__ == '__main__':
+    main()
 
 
