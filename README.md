@@ -53,4 +53,4 @@ Run the code:
 
 Where the `player_id` is an identifier found from [basketball-reference.com](http://www.basketball-reference.com/) e.g. `iversal01` for Allen Iverson
 
-
+An example for [J.R. Smith's 2015 Playoffs](https://plot.ly/~sunjayb/68/jr-smith-2015-playoffs-plusminus/)
