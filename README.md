@@ -29,6 +29,12 @@ Open your terminal application and run the following:
 
 Remove `sudo` on Windows
 
+#### Install yahoo-finance
+
+	pip install yahoo-finance
+
+Remove `sudo` on Windows
+
 ---
 
 ### Running Examples
